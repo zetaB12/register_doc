@@ -1,5 +1,7 @@
 ﻿using BusinessEntity;
 using BusinessLogic;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace WebPresentation.Controllers
@@ -21,6 +23,39 @@ namespace WebPresentation.Controllers
 
             return Json(doc, JsonRequestBehavior.AllowGet);
 
+        }
+
+        [HttpPost]
+        public ActionResult GuardarDestino(string Fecha, int? IdCourier, List<Destino> ListadoDetalle)
+        {
+            string mensaje = "";
+            List<int> listIdDestino = new List<int>();
+
+            if (IdCourier != null)
+            {
+                var idHojaEnvio = HojaEnvioBL.Instancia.CreateHojaEnvio(IdCourier); //obtener el id de hoja de envio
+
+                foreach (var data in ListadoDetalle)
+                {
+                    string nombreDestino = data.NombreDestino.ToString();
+                    int idDocumento = Convert.ToInt32(data.IdDocumento.ToString());
+                    //var objDestino = new entDestino(nombreDestino, idDocumento);
+                    var idDestino = DestinoBL.Instancia.AgregarDestino(idDocumento, nombreDestino);
+                    listIdDestino.Add(idDestino);
+                }
+
+                foreach (var item in listIdDestino)
+                {
+                    Detalle_HojaDestinoBL.Instancia.CreateHojaEnvio_Destino(idHojaEnvio, item);
+                }
+                mensaje = "SE GUARDO CON EXITO";
+
+            }
+            mensaje = "error en el id de courier";
+
+
+
+            return Json(mensaje);
         }
     }
 }

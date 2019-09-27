@@ -153,7 +153,7 @@
                 console.info(json);
 
                 $.ajax({
-                    url: "@Url.Action("GuardarDestino", "Inicio")",
+                    url: "@Url.Action("GuardarDestino", "Home")",
                     data: JSON.stringify(json),
                     type: "POST",
                     //async: false,//this makes the ajax-call blocking

@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DestinoBL.cs" />
+    <Compile Include="Detalle_HojaDestinoBL.cs" />
     <Compile Include="DocumentoBL.cs" />
+    <Compile Include="HojaEnvioBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
