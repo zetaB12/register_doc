@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,6 +8,7 @@
 <input type="hidden" id="IdCourier" />
 <input type="hidden" id="id_fecha" readonly value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day @DateTime.Now.Hour:@DateTime.Now.Minute:@DateTime.Now.Second" />
 <div class="container">
+    <br>
     <h4>REGISTRO DE DOCUMENTOS</h4>
     <hr />
     <br />
@@ -17,7 +18,7 @@
             <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
             <div class="col-sm-8">
                 <select id="selectCourier" class="js-example-placeholder-single js-example-responsive form-control">
-                    <option disabled selected>--Seleccione--</option>
+                    <option value="0" selected>--Seleccione--</option>
                     <option value="1">Empresa Mapresa</option>
                     <option value="2">Olva</option>
                     <option value="3">Juan Benito</option>
@@ -116,18 +117,7 @@
 </div>
 <br />
 <br />
-<div>
-    <footer class="page-footer font-small blue pt-4">
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
-            © 2019 Copyright:
-            <a href="#"> {B12}</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-</div>
 
 
 
@@ -137,6 +127,12 @@
             $("#btnRegistrar").click(function () {
             //alertify.alert("Boton Iniciado");
             //console.info('hola');
+                if ($("#selectCourier").val() == "0") {
+                    toastr.error("Seleccione un courier", "Campos Incompletos");
+                    $("#selectCourier").focus();
+                    return;
+                }
+
             var i = 0;
             var envio = "{Fecha:'" + $("#id_fecha").val() + "',IdCourier:'" + $("#IdCourier").val() + "',IdCliente:'" + $("#codigoCliente").val() + "',Total:'" + $('#TotalaPagar').val() + "',";
                 $("#detalle tbody tr").each(function (index) {
@@ -181,92 +177,91 @@
                 var str = $(this).children("option:selected").val();
 
                 $("#IdCourier").val(str);
-
-
             });
     };
 
-        var numeroFila = 1;
-        var btnAgregar = document.getElementById('btnAgregar');
-        btnAgregar.addEventListener("click", function () {
+    var numeroFila = 1;
+    var btnAgregar = document.getElementById('btnAgregar');
+    btnAgregar.addEventListener("click", function () {
 
-            if ($("#num_sisgedo").val() == "") {
-                alert("El numero de sisgedo es obligatorio");
-                console.log("error");
-                $("#num_sisgedo").focus();
-                return;
-            }
+        if ($("#num_sisgedo").val() === "") {
+            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+            $("#num_sisgedo").focus();
+            return;
+        }
 
-            if ($("#destino").val() === "") {
-                alert("El destino es obligatorio");
-                $("#destino").focus();
-                return;
-            }
-            $("#encabezadoTable").show("slow");
-            var fila = "<tr id=fil" + numeroFila +"><td>" + numeroFila +
-                "</td><td>" + $("#num_sisgedo").val() +
-                "</td><td>" + $("#num_doc").val() +
-                "</td><td>" + $("#asunto").val() +
-                "</td><td>" + parseInt($("#fol").val()) +
-                "</td><td>" + $("#firma").val() +
-                "</td><td>" + $("#destino").val() +
-                "</td><td><button onclick ='BorrarFila(" + numeroFila + ")' class='btn btn-danger btn-sm' > <i class='icon ion-md-close'></i></button >" +
-                "</td><td style='display: none'>" + $("#id_doc").val()+"</td ></tr > ";
-            InsertarFilaAlaTabla(fila);
-            numeroFila++;
+        if ($("#destino").val() === "") {
+            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+            $("#destino").focus();
+            return;
+        }
 
-            //Limpiamos los controles
-            LimpiarControles();
-        });
+        $("#encabezadoTable").show("slow");
+        var fila = "<tr id=fil" + numeroFila +"><td>" + numeroFila +
+        "</td><td>" + $("#num_sisgedo").val() +
+        "</td><td>" + $("#num_doc").val() +
+        "</td><td>" + $("#asunto").val() +
+        "</td><td>" + parseInt($("#fol").val()) +
+        "</td><td>" + $("#firma").val() +
+        "</td><td>" + $("#destino").val() +
+        "</td><td><button onclick ='BorrarFila(" + numeroFila + ")' class='btn btn-danger btn-sm' > <i class='icon ion-md-close'></i></button >" +
+        "</td><td style='display: none'>" + $("#id_doc").val()+"</td ></tr > ";
+        InsertarFilaAlaTabla(fila);
+        numeroFila++;
 
-        function BorrarFila(num) {
+        //Limpiamos los controles
+        LimpiarControles();
+    });
+
+    function BorrarFila(num) {
+
             //var num = $("#fil" + num).attr;
             //alert(num);
 
-            $("#fil"+num).remove();
-        }
+        $("#fil"+num).remove();
+     }
 
-        function InsertarFilaAlaTabla(fila) {
-            $("#detalle").children("tbody").append(fila);
-        }
+    function InsertarFilaAlaTabla(fila) {
+        $("#detalle").children("tbody").append(fila);
+    }
 
-        function LimpiarControles() {
-            $("#num_sisgedo").val(null);
-            $("#num_doc").val(null);
-            $("#asunto").val(null);
-            $("#fol").val(null);
-            $("#firma").val(null);
-            $("#destino").val(null);
-        }
+    function LimpiarControles() {
+        $("#num_sisgedo").val(null);
+        $("#num_doc").val(null);
+        $("#asunto").val(null);
+        $("#fol").val(null);
+        $("#firma").val(null);
+        $("#destino").val(null);
+    }
 
-        function btnBuscar() {
-
-            if ($("#num_sisgedo").val() == "") {
-                alert("Ingrese numero de sisgedo");
-                console.log("error");
-                $("#num_sisgedo").focus();
-                return;
-            }
+    function btnBuscar() {
             
-            $.ajax({
-                data: { num_sisgedo: $("#num_sisgedo").val() },
-                type: "GET",
-                dataType: "json",
-                url: '@Url.Action("BuscarNumSisgedo", "Home")',
-                success: function (data) {
-                    $('#id_doc').val(data.Id);
-                    $('#num_doc').val(data.NumeroDocumento);
-                    $('#asunto').val(data.Asunto);
-                    $('#fol').val(data.Fol);
-                    $('#firma').val(data.Firma);
-                }
-            });
+        if ($("#num_sisgedo").val() == "") {
+            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+            $("#num_sisgedo").focus();
+            return;
         }
+
+        $.ajax({
+            data: { num_sisgedo: $("#num_sisgedo").val() },
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("BuscarNumSisgedo", "Home")',
+            success: function (data) {
+                $('#id_doc').val(data.Id);
+                $('#num_doc').val(data.NumeroDocumento);
+                $('#asunto').val(data.Asunto);
+                $('#fol').val(data.Fol);
+                $('#firma').val(data.Firma);
+            }
+        });
+    }
+
 </script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-
-
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<script scr="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js">
+</script>
