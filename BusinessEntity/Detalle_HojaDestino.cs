@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BusinessEntity
 {
-    public class Class1
+    public class Detalle_HojaDestino
     {
-        public string name { get; set; }
-
+        public int Id { get; set; }
+        public int IdHoja { get; set; }
+        public int IdDestino { get; set; }
     }
 }
