@@ -1,3 +1,9 @@
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.IO.Compression.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\VBCSCompiler.exe
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\WebPresentation.dll.config
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\WebPresentation.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\WebPresentation.pdb
@@ -8,13 +14,9 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\cs
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\csi.exe.config
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\csi.rsp
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -24,7 +26,6 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Sy
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.IO.Compression.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -47,8 +48,9 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\Sy
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\vbc.exe
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\vbc.exe.config
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\vbc.rsp
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\VBCSCompiler.exe
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessEntity.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessLogic.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Helpers.dll
@@ -57,6 +59,9 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.We
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Webpages.Deployment.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Webpages.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Webpages.Razor.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessDataAccess.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessEntity.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessLogic.pdb
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Razor.xml
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Webpages.xml
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Webpages.Deployment.xml
@@ -64,6 +69,7 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.We
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Helpers.xml
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\System.Web.Mvc.xml
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessDataAccess.pdb
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\es\System.Web.Razor.resources.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\es\System.Web.Webpages.resources.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\es\System.Web.Webpages.Deployment.resources.dll
@@ -75,5 +81,3 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\obj\Debug\Web
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\obj\Debug\WebPresentation.csproj.CopyComplete
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\obj\Debug\WebPresentation.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\obj\Debug\WebPresentation.pdb
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessEntity.dll
-C:\Users\ASUS\Desktop\registro_doc\WebPresentation\WebPresentation\bin\BusinessEntity.pdb

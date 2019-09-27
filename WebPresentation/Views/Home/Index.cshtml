@@ -1,8 +1,272 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<input type="hidden" id="id_doc" />
+<input type="hidden" id="IdCourier" />
+<input type="hidden" id="id_fecha" readonly value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day @DateTime.Now.Hour:@DateTime.Now.Minute:@DateTime.Now.Second" />
+<div class="container">
+    <h4>REGISTRO DE DOCUMENTOS</h4>
+    <hr />
+    <br />
 
-@ViewBag.nombre
+    <div class="container">
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
+            <div class="col-sm-8">
+                <select id="selectCourier" class="js-example-placeholder-single js-example-responsive form-control">
+                    <option disabled selected>--Seleccione--</option>
+                    <option value="1">Empresa Mapresa</option>
+                    <option value="2">Olva</option>
+                    <option value="3">Juan Benito</option>
+                    @*@foreach (var Sede in ListarSede)
+                        {
+                            <option value="@Sede.Id_Sede">@Sede.Sede_Descripcion</option>
+                        }*@
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-xs-2">
+                @* <button type="button" class="btn btn-primary" style="width:34px"><strong>Aceptar</strong></button>*@
+                @*<button type="button" class="button_Registrar" style=" width: 130px; height: 35px;" onclick="@("window.location.href='"+Url.Action("Registro","home")+"'");"><span><strong>Aceptar</strong></span></button>*@
+            </div>
+        </div>
+        <hr />
+        <br />
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Cod. de Sisgedo</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="num_sisgedo">
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-success " onclick="btnBuscar()"><strong>Buscar</strong></button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Num. de Documento</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="num_doc" readonly>
+            </div>
+            <label for="" class="col-sm-1 col-form-label">Folios</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="fol" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Asunto</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="asunto" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Firma</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="firma" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Destino</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="destino">
+            </div>
+        </div>
+        <!-- #boton registrar -->
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-12 col-sm-12"></div>
+                            <div class="col-md-6 col-xs-12 col-sm-12">
+                                <button type="button" class="btn btn-primary form-control" id="btnAgregar"><span><strong>AGREGAR</strong></span></button>
+                            </div>
+                            <div class="col-md-3 col-xs-12 col-sm-12"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+</div>
+<div class="container">
+    <div id="encabezadoTable" style="display: none">
+        <div class="table-responsive">
+            <table id="detalle" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Cod. de Sisgedo</th>
+                        <th>N° Documento</th>
+                        <th>Asunto</th>
+                        <th>Folios</th>
+                        <th>Firma</th>
+                        <th>Destino</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <footer class="page-footer font-small blue pt-4">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="#"> {B12}</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+</div>
+
+
+
+<script>
+
+    window.onload = function () {
+            $("#btnRegistrar").click(function () {
+            //alertify.alert("Boton Iniciado");
+            //console.info('hola');
+            var i = 0;
+            var envio = "{Fecha:'" + $("#id_fecha").val() + "',IdCourier:'" + $("#IdCourier").val() + "',IdCliente:'" + $("#codigoCliente").val() + "',Total:'" + $('#TotalaPagar').val() + "',";
+                $("#detalle tbody tr").each(function (index) {
+                    if (i == 0) {
+                        envio += "ListadoDetalle:[{NombreDestino:'" + $(this).find('td').eq(6).text() +
+                            "',IdDocumento:'" + $(this).find('td').eq(8).text() + "'}";
+                    } else {
+                        envio += ",{NombreDestino:'" + $(this).find('td').eq(6).text() +
+                            "',IdDocumento:'" + $(this).find('td').eq(8).text() + "'}"
+                    }
+                    i = 1;
+                });
+                envio += "]}";
+
+                var json = eval("(" + envio + ')');
+
+                //alertify.alert("INGRESE DATOS");
+                console.info(json);
+
+                $.ajax({
+                    url: "@Url.Action("GuardarDestino", "Inicio")",
+                    data: JSON.stringify(json),
+                    type: "POST",
+                    //async: false,//this makes the ajax-call blocking
+                    contentType: 'application/json;charset=UTF-8',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        //alertify.alert(response);
+                        valid = response.valid;
+                    },
+                    error: function (error) {
+                        //alertify.alert(error);
+                        //console.log(error);
+
+                    }
+                });
+            });
+
+            $("select#selectCourier").change(function () {
+
+                var str = $(this).children("option:selected").val();
+
+                $("#IdCourier").val(str);
+
+
+            });
+    };
+
+        var numeroFila = 1;
+        var btnAgregar = document.getElementById('btnAgregar');
+        btnAgregar.addEventListener("click", function () {
+
+            if ($("#num_sisgedo").val() == "") {
+                alert("El numero de sisgedo es obligatorio");
+                console.log("error");
+                $("#num_sisgedo").focus();
+                return;
+            }
+
+            if ($("#destino").val() === "") {
+                alert("El destino es obligatorio");
+                $("#destino").focus();
+                return;
+            }
+            $("#encabezadoTable").show("slow");
+            var fila = "<tr id=fil" + numeroFila +"><td>" + numeroFila +
+                "</td><td>" + $("#num_sisgedo").val() +
+                "</td><td>" + $("#num_doc").val() +
+                "</td><td>" + $("#asunto").val() +
+                "</td><td>" + parseInt($("#fol").val()) +
+                "</td><td>" + $("#firma").val() +
+                "</td><td>" + $("#destino").val() +
+                "</td><td><button onclick ='BorrarFila(" + numeroFila + ")' class='btn btn-danger btn-sm' > <i class='icon ion-md-close'></i></button >" +
+                "</td><td style='display: none'>" + $("#id_doc").val()+"</td ></tr > ";
+            InsertarFilaAlaTabla(fila);
+            numeroFila++;
+
+            //Limpiamos los controles
+            LimpiarControles();
+        });
+
+        function BorrarFila(num) {
+            //var num = $("#fil" + num).attr;
+            //alert(num);
+
+            $("#fil"+num).remove();
+        }
+
+        function InsertarFilaAlaTabla(fila) {
+            $("#detalle").children("tbody").append(fila);
+        }
+
+        function LimpiarControles() {
+            $("#num_sisgedo").val(null);
+            $("#num_doc").val(null);
+            $("#asunto").val(null);
+            $("#fol").val(null);
+            $("#firma").val(null);
+            $("#destino").val(null);
+        }
+
+        function btnBuscar() {
+
+            if ($("#num_sisgedo").val() == "") {
+                alert("Ingrese numero de sisgedo");
+                console.log("error");
+                $("#num_sisgedo").focus();
+                return;
+            }
+            
+            $.ajax({
+                data: { num_sisgedo: $("#num_sisgedo").val() },
+                type: "GET",
+                dataType: "json",
+                url: '@Url.Action("BuscarNumSisgedo", "Home")',
+                success: function (data) {
+                    $('#id_doc').val(data.Id);
+                    $('#num_doc').val(data.NumeroDocumento);
+                    $('#asunto').val(data.Asunto);
+                    $('#fol').val(data.Fol);
+                    $('#firma').val(data.Firma);
+                }
+            });
+        }
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+

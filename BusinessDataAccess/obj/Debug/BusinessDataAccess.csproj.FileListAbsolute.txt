@@ -1,0 +1,9 @@
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\bin\Debug\BusinessDataAccess.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\bin\Debug\BusinessDataAccess.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\bin\Debug\BusinessEntity.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\bin\Debug\BusinessEntity.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\obj\Debug\BusinessDataAccess.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\obj\Debug\BusinessDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\obj\Debug\BusinessDataAccess.csproj.CopyComplete
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\obj\Debug\BusinessDataAccess.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessDataAccess\obj\Debug\BusinessDataAccess.pdb

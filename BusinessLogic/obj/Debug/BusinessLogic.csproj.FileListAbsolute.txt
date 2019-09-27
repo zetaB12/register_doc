@@ -1,0 +1,11 @@
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessDataAccess.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessEntity.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessDataAccess.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\bin\Debug\BusinessEntity.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\obj\Debug\BusinessLogic.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessLogic\obj\Debug\BusinessLogic.pdb
