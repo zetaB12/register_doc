@@ -3,7 +3,7 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<button onclick="alert()">alert</button>
 <input type="hidden" id="id_doc" />
 <input type="hidden" id="IdCourier" />
 <input type="hidden" id="id_fecha" readonly value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day @DateTime.Now.Hour:@DateTime.Now.Minute:@DateTime.Now.Second" />
@@ -160,13 +160,23 @@
                     contentType: 'application/json;charset=UTF-8',
                     dataType: 'json',
                     success: function (response) {
-                        console.log(response);
-                        //alertify.alert(response);
-                        valid = response.valid;
+                        if (response == "success") {
+                            Swal.fire({
+//                                position: 'top-end',
+                                type: 'success',
+                                title: 'Se registro con éxito!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then((result) => {
+                                window.location.href = "@Url.Action("Index", "Home")";
+                            });
+                                //Limpiamos el formulario actual
+                                
+                        }
                     },
                     error: function (error) {
                         //alertify.alert(error);
-                        //console.log(error);
+                        console.log(error);
 
                     }
                 });
@@ -257,6 +267,16 @@
         });
     }
 
+    function alert() {
+        
+        Swal.fire({
+            type: 'success',
+            title: 'Se registro con éxito!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+
 </script>
 
 <!-- Optional JavaScript -->
@@ -265,3 +285,5 @@
 </script>
 <script scr="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js">
 </script>
+
+

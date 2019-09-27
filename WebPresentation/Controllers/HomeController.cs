@@ -48,12 +48,8 @@ namespace WebPresentation.Controllers
                 {
                     Detalle_HojaDestinoBL.Instancia.CreateHojaEnvio_Destino(idHojaEnvio, item);
                 }
-                mensaje = "SE GUARDO CON EXITO";
-
+                mensaje = "success";
             }
-            mensaje = "error en el id de courier";
-
-
 
             return Json(mensaje);
         }
