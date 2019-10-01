@@ -53,5 +53,10 @@ namespace WebPresentation.Controllers
 
             return Json(mensaje);
         }
+
+        public ActionResult BuscarDocumentosPorFecha()
+        {
+            return View();
+        }
     }
 }

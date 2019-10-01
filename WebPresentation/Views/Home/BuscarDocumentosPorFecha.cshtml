@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "BuscarDocumentosPorFecha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<div class="container">
+    <h3>Buscar Documentos</h3>
+    <hr class="style-three" />
+    <br />
+
+    <div class="container col-md-12 col-xs-12">
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
+            <div class="col-sm-8">
+                <select id="selectSede" class="js-example-placeholder-single js-example-responsive form-control">
+                    <option disabled selected>--Seleccione--</option>
+                    <option>Empresa Mapresa</option>
+                    <option>Olva</option>
+                    <option>Juan Benito</option>
+                    @*@foreach (var Sede in ListarSede)
+                        {
+                            <option value="@Sede.Id_Sede">@Sede.Sede_Descripcion</option>
+                        }*@
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-xs-2">
+                @* <button type="button" class="btn btn-primary" style="width:34px"><strong>Aceptar</strong></button>*@
+                @*<button type="button" class="button_Registrar" style=" width: 130px; height: 35px;" onclick="@("window.location.href='"+Url.Action("Registro","home")+"'");"><span><strong>Aceptar</strong></span></button>*@
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Fecha de notificacion</label>
+            <div class="col-sm-4">
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar" ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker2">
+                </div>
+            </div>
+            <!-- /.input group -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <form>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <button type="button" class="btn btn-primary form-control" id="btnAgregar"><span><strong>BUSCAR</strong></span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+</div>
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+@section scriptsBuscarDocFecha {
+
+    <script>
+        $(document).ready(function () {
+            //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+            $('#datepicker2').datepicker({
+                autoclose: true
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+}

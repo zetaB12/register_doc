@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />    
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css" rel="stylesheet" />
 
 </head>
@@ -85,6 +86,7 @@
     <script src="~/Scripts/toastr.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
+    @RenderSection("scriptsIndex", required: false)
+    @RenderSection("scriptsBuscarDocFecha", required: false)
 </body>
 </html>
