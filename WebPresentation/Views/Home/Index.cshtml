@@ -3,7 +3,8 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<button onclick="alert()">alert</button><span id="response">activo</span>
+
+<button class="contar" onclick="contar()">aqui</button>
 <input type="hidden" id="id_doc" />
 <input type="hidden" id="IdCourier" />
 <input type="hidden" id="id_fecha" readonly value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day @DateTime.Now.Hour:@DateTime.Now.Minute:@DateTime.Now.Second" />
@@ -233,16 +234,25 @@
         LimpiarControles();
     });
 
+        function contar() {
+            var num = $("#detalle tbody tr").length;
+            console.log("di " + num);
+        }
+
+
     function BorrarFila(num) {
 
             //var num = $("#fil" + num).attr;
             //alert(num);
-
-        $("#fil"+num).remove();
+        
+        $("#fil" + num).remove();
+        if ($("#detalle tbody tr").length == 0 ) {
+            $("#encabezadoTable").hide();
+        }
      }
 
     function InsertarFilaAlaTabla(fila) {
-        $("#detalle").children("tbody").append(fila);
+        $("#detalle").children("tbody").append(fila);       
     }
 
     function LimpiarControles() {

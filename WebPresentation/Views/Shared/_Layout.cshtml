@@ -13,60 +13,62 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />    
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css" rel="stylesheet" />
 
 </head>
 <style>
 
-#circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-	  width: 150px;
-    height: 150px;
-}
+    #circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 150px;
+        height: 150px;
+    }
 
-.loader {
-  width: calc(100% - 0px);
-	height: calc(100% - 0px);
-	border: 5px solid #FFC300;
-	border-top: 5px solid rgb(236, 239, 243);
-	border-radius: 50%;
-	animation: rotate 5s linear infinite;
-}
-.loaderdos {
-  width: calc(100% - 0px);
-	height: calc(100% - 0px);
-	border: 5px solid #FF5733;
-	border-top: 5px solid rgb(241, 241, 241);
-	border-radius: 50%;
-	animation: rotate 5s linear infinite;
-}
+    .loader {
+        width: calc(100% - 0px);
+        height: calc(100% - 0px);
+        border: 5px solid #FFC300;
+        border-top: 5px solid rgb(236, 239, 243);
+        border-radius: 50%;
+        animation: rotate 5s linear infinite;
+    }
 
-.loadertres {
-  width: calc(100% - 0px);
-	height: calc(100% - 0px);
-	border: 5px solid #C70039;
-	border-top: 5px solid rgb(241, 241, 241);
-	border-radius: 50%;
-	animation: rotate 5s linear infinite;
-}
+    .loaderdos {
+        width: calc(100% - 0px);
+        height: calc(100% - 0px);
+        border: 5px solid #FF5733;
+        border-top: 5px solid rgb(241, 241, 241);
+        border-radius: 50%;
+        animation: rotate 5s linear infinite;
+    }
 
-@@keyframes rotate {
-100% {transform: rotate(360deg);}
-}
+    .loadertres {
+        width: calc(100% - 0px);
+        height: calc(100% - 0px);
+        border: 5px solid #C70039;
+        border-top: 5px solid rgb(241, 241, 241);
+        border-radius: 50%;
+        animation: rotate 5s linear infinite;
+    }
 
+    @@keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>
 <body>
 
     <div class="body-content">
         @RenderBody()
-        <hr />
-        <div>
-            <footer class="page-footer font-small blue pt-4">
 
+        <div>
+            <footer class="page-footer font-small blue pt-4" style="margin-top:150px;">
+                <hr />
                 <!-- Copyright -->
                 <div class="footer-copyright text-center py-3">
                     © 2019 Copyright:
