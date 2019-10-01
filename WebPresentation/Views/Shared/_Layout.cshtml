@@ -16,7 +16,48 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css" rel="stylesheet" />
 
 </head>
+<style>
 
+#circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+	  width: 150px;
+    height: 150px;
+}
+
+.loader {
+  width: calc(100% - 0px);
+	height: calc(100% - 0px);
+	border: 5px solid #FFC300;
+	border-top: 5px solid rgb(236, 239, 243);
+	border-radius: 50%;
+	animation: rotate 5s linear infinite;
+}
+.loaderdos {
+  width: calc(100% - 0px);
+	height: calc(100% - 0px);
+	border: 5px solid #FF5733;
+	border-top: 5px solid rgb(241, 241, 241);
+	border-radius: 50%;
+	animation: rotate 5s linear infinite;
+}
+
+.loadertres {
+  width: calc(100% - 0px);
+	height: calc(100% - 0px);
+	border: 5px solid #C70039;
+	border-top: 5px solid rgb(241, 241, 241);
+	border-radius: 50%;
+	animation: rotate 5s linear infinite;
+}
+
+@@keyframes rotate {
+100% {transform: rotate(360deg);}
+}
+
+</style>
 <body>
 
     <div class="body-content">

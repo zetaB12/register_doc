@@ -3,7 +3,7 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<button onclick="alert()">alert</button>
+<button onclick="alert()">alert</button><span id="response">activo</span>
 <input type="hidden" id="id_doc" />
 <input type="hidden" id="IdCourier" />
 <input type="hidden" id="id_fecha" readonly value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day @DateTime.Now.Hour:@DateTime.Now.Minute:@DateTime.Now.Second" />
@@ -117,6 +117,18 @@
 </div>
 <br />
 <br />
+<div id="loading" style='display: none;'>
+    <div id="circle">
+        <div class="loader">
+            <div class="loaderdos">
+                <div class="loadertres">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -171,7 +183,7 @@
                                 window.location.href = "@Url.Action("Index", "Home")";
                             });
                                 //Limpiamos el formulario actual
-                                
+
                         }
                     },
                     error: function (error) {
@@ -245,7 +257,7 @@
     }
 
     function btnBuscar() {
-            
+
         if ($("#num_sisgedo").val() == "") {
             toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
             $("#num_sisgedo").focus();
@@ -257,18 +269,25 @@
             type: "GET",
             dataType: "json",
             url: '@Url.Action("BuscarNumSisgedo", "Home")',
+            beforeSend: function () {
+                $('#loading').show();
+            },
             success: function (data) {
                 $('#id_doc').val(data.Id);
                 $('#num_doc').val(data.NumeroDocumento);
                 $('#asunto').val(data.Asunto);
                 $('#fol').val(data.Fol);
                 $('#firma').val(data.Firma);
+            },
+            complete: function (data) {
+                // Hide image container
+                $("#loading").hide();
             }
         });
     }
 
     function alert() {
-        
+
         Swal.fire({
             type: 'success',
             title: 'Se registro con éxito!',
