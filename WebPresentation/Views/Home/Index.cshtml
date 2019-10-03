@@ -145,7 +145,7 @@
                 }
 
             var i = 0;
-            var envio = "{Fecha:'" + $("#id_fecha").val() + "',IdCourier:'" + $("#IdCourier").val() + "',IdCliente:'" + $("#codigoCliente").val() + "',Total:'" + $('#TotalaPagar').val() + "',";
+                var envio = "{IdCourier:'" + $("#IdCourier").val() + "',";
                 $("#detalle tbody tr").each(function (index) {
                     if (i == 0) {
                         envio += "ListadoDetalle:[{NombreDestino:'" + $(this).find('td').eq(6).text() +
