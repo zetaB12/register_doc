@@ -45,7 +45,7 @@
         <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label">Destino</label>
             <div class="col-sm-8">
-                <select type="text" class="form-control" id="destino"></select>
+                <select type="text" class="form-control" id="SelectDestino"></select>
 
             </div>
         </div>
@@ -121,6 +121,27 @@
                 $('#asunto').val(data.Asunto);
                 $('#fol').val(data.Fol);
                 $('#firma').val(data.Firma);
+            },
+            complete: function (data) {
+                // Hide image container
+                $("#loading").hide();
+            }
+        });
+
+        $.ajax({
+            data: { num_sisgedo: $("#num_sisgedo").val() },
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("BuscarDestinos", "Home")',
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            success: function (data) {
+                $("#SelectDestino").html('');
+                $.each(data, function (index, row) {
+                    $("#SelectDestino").append("<option value='" + row.Id + "' selected='selected'>" + row.NombreDestino + "</option>")
+                });
+                $("#SelectDestino").val("0").change();
             },
             complete: function (data) {
                 // Hide image container

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessEntity;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -33,7 +35,40 @@ namespace BusinessDataAccess
             }
             catch (Exception ex) { throw ex; }
             finally { cmd.Connection.Close(); }
+        }
 
+        public List<Destino> Buscar_Destinos(string num_sis)
+        {
+            SqlCommand cmd = null;
+            
+            var parametros = new List<SqlParameter>();
+            var listaDestinos = new List<Destino>();
+            Destino destino = null;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.conectar();
+                cmd = new SqlCommand("_spListarDestinos", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@num_sis", Convert.ToInt32(num_sis));
+                cn.Open();
+                SqlDataReader data = cmd.ExecuteReader();
+                while (data.Read())
+                {
+                    destino = new Destino()
+                    {
+                        Id = Convert.ToInt32(data["id_destino"]),
+                        NombreDestino = data["nombreDestino"].ToString()
+                    };
+                    listaDestinos.Add(destino);
+                }
+            }
+            catch (Exception x)
+            {
+                throw x;
+            }
+            finally { cmd.Connection.Close(); }
+            return listaDestinos;
         }
     }
 }

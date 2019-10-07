@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using BusinessDataAccess;
+using BusinessEntity;
 
 namespace BusinessLogic
 {
@@ -20,7 +22,18 @@ namespace BusinessLogic
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        public List<Destino> Buscar_Destinos(string num_sis)
+        {
+            try
+            {
+                return DestinoDA.Instancia.Buscar_Destinos(num_sis);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

@@ -63,5 +63,11 @@ namespace WebPresentation.Controllers
         {
             return View();
         }
+
+        public JsonResult BuscarDestinos(string num_sisgedo)
+        {
+            var destinos = DestinoBL.Instancia.Buscar_Destinos(num_sisgedo);
+            return Json(destinos, JsonRequestBehavior.AllowGet);
+        }
     }
 }
