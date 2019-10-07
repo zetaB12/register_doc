@@ -81,45 +81,14 @@
 
     <br />
 </div>
-<div class="container">
-    <div id="encabezadoTable" style="display: none">
-        <div class="table-responsive">
-            <table id="detalle" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>Cod. de Sisgedo</th>
-                        <th>N° Documento</th>
-                        <th>Asunto</th>
-                        <th>Folios</th>
-                        <th>Firma</th>
-                        <th>Destino</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>
-        </div>
-    </div>
-</div>
+
 <br />
 <br />
-<div id="loading" style='display: none;'>
-    <div id="circle">
-        <div class="loader">
-            <div class="loaderdos">
-                <div class="loadertres">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-@section scriptsBuscarDocFecha {
 
+@section scriptsRegistrarFecha {
+    
     <script>
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
@@ -128,5 +97,36 @@
             });
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        function btnBuscar() {
+
+        if ($("#num_sisgedo").val() == "") {
+            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+            $("#num_sisgedo").focus();
+            return;
+        }
+
+        $.ajax({
+            data: { num_sisgedo: $("#num_sisgedo").val() },
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("BuscarNumSisgedo", "Home")',
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            success: function (data) {
+                $('#id_doc').val(data.Id);
+                $('#num_doc').val(data.NumeroDocumento);
+                $('#asunto').val(data.Asunto);
+                $('#fol').val(data.Fol);
+                $('#firma').val(data.Firma);
+            },
+            complete: function (data) {
+                // Hide image container
+                $("#loading").hide();
+            }
+        });
+    }
+    </script>
 }
