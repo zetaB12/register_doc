@@ -4,5 +4,129 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RegistrarFechaDeNotificacion</h2>
+<div class="container">
+    <br>
+    <h4>REGISTRAR FECHA DE NOTFICACION</h4>
+    <hr />
+    <br />
 
+    <div class="container">
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Cod. de Sisgedo</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="num_sisgedo">
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-success " onclick="btnBuscar()"><strong>Buscar</strong></button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Num. de Documento</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="num_doc" readonly>
+            </div>
+            <label for="" class="col-sm-1 col-form-label">Folios</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="fol" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Asunto</label>
+            <div class="col-sm-8">
+                <textarea type="text" class="form-control " id="asunto" rows="1" readonly></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Firma</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="firma" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Destino</label>
+            <div class="col-sm-8">
+                <select type="text" class="form-control" id="destino"></select>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Fecha de notificacion</label>
+            <div class="col-sm-4">
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker">
+                </div>
+            </div>
+        </div>
+        <!-- #boton registrar -->
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-12 col-sm-12"></div>
+                            <div class="col-md-6 col-xs-12 col-sm-12">
+                                <button type="button" class="btn btn-primary form-control" id="btnAgregar"><span><strong>AGREGAR</strong></span></button>
+                            </div>
+                            <div class="col-md-3 col-xs-12 col-sm-12"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+</div>
+<div class="container">
+    <div id="encabezadoTable" style="display: none">
+        <div class="table-responsive">
+            <table id="detalle" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Cod. de Sisgedo</th>
+                        <th>N° Documento</th>
+                        <th>Asunto</th>
+                        <th>Folios</th>
+                        <th>Firma</th>
+                        <th>Destino</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div id="loading" style='display: none;'>
+    <div id="circle">
+        <div class="loader">
+            <div class="loaderdos">
+                <div class="loadertres">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scriptsBuscarDocFecha {
+
+    <script>
+        $(document).ready(function () {
+            //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+}
