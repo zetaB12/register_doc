@@ -58,5 +58,10 @@ namespace WebPresentation.Controllers
         {
             return View();
         }
+
+        public ActionResult RegistrarFechaDeNotificacion()
+        {
+            return View();
+        }
     }
 }
