@@ -37,5 +37,18 @@ namespace BusinessLogic
                 throw ex;
             }
         }
+
+        public bool RegistrarFechaNotificacion()
+        {
+            try
+            {
+                return DestinoDA.Instancia.RegistrarFechaNotificacion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
     }
 }
