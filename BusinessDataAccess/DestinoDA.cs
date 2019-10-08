@@ -70,5 +70,25 @@ namespace BusinessDataAccess
             finally { cmd.Connection.Close(); }
             return listaDestinos;
         }
+
+        public bool RegistrarFechaNotificacion(string destino, string date)
+        {
+            SqlCommand cmd = null;
+            bool insert = false;
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.conectar();
+                cmd = new SqlCommand("_spRegistrarFechaNotificacion", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@destino", destino);
+                cmd.Parameters.AddWithValue("@date", date);
+                cn.Open();
+                int i = cmd.ExecuteNonQuery();
+                insert = i > 0 ? true : false;
+            }
+            catch (Exception ex) { throw ex; }
+            finally { cmd.Connection.Close(); }
+            return insert;
+        }
     }
 }

@@ -38,11 +38,11 @@ namespace BusinessLogic
             }
         }
 
-        public bool RegistrarFechaNotificacion()
+        public bool RegistrarFechaNotificacion(string destino, string date)
         {
             try
             {
-                return DestinoDA.Instancia.RegistrarFechaNotificacion();
+                return DestinoDA.Instancia.RegistrarFechaNotificacion(destino, date);
             }
             catch (Exception ex)
             {

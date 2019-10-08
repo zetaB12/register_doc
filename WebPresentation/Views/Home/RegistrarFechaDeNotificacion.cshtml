@@ -88,16 +88,16 @@
 
 
 @section scriptsRegistrarFecha {
-    
+
     <script>
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
             $('#datepicker').datepicker({
-//                todayBtn: "linked",
+                //                todayBtn: "linked",
                 language: "it",
                 autoclose: true,
                 todayHighlight: true,
-                format: 'dd/mm/yyyy' 
+                format: 'dd/mm/yyyy'
             });
         });
     </script>
@@ -105,53 +105,112 @@
     <script>
         function btnBuscar() {
 
-        if ($("#num_sisgedo").val() == "") {
-            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
-            $("#num_sisgedo").focus();
-            return;
+            if ($("#num_sisgedo").val() == "") {
+                toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+                $("#num_sisgedo").focus();
+                return;
+            }
+
+            $.ajax({
+                data: { num_sisgedo: $("#num_sisgedo").val() },
+                type: "GET",
+                dataType: "json",
+                url: '@Url.Action("BuscarNumSisgedo", "Home")',
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    $('#id_doc').val(data.Id);
+                    $('#num_doc').val(data.NumeroDocumento);
+                    $('#asunto').val(data.Asunto);
+                    $('#fol').val(data.Fol);
+                    $('#firma').val(data.Firma);
+                },
+                complete: function (data) {
+                    // Hide image container
+                    $("#loading").hide();
+                }
+            });
+
+            $.ajax({
+                data: { num_sisgedo: $("#num_sisgedo").val() },
+                type: "GET",
+                dataType: "json",
+                url: '@Url.Action("BuscarDestinos", "Home")',
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    $("#SelectDestino").html('');
+                    $.each(data, function (index, row) {
+                        $("#SelectDestino").append("<option value='" + row.Id + "' selected='selected'>" + row.NombreDestino + "</option>")
+                    });
+                    $("#selectDestino option:selected").trigger("change");
+                },
+                complete: function (data) {
+                    // Hide image container
+                    $("#loading").hide();
+                }
+            });
         }
 
-        $.ajax({
-            data: { num_sisgedo: $("#num_sisgedo").val() },
-            type: "GET",
-            dataType: "json",
-            url: '@Url.Action("BuscarNumSisgedo", "Home")',
-            beforeSend: function () {
-                $('#loading').show();
-            },
-            success: function (data) {
-                $('#id_doc').val(data.Id);
-                $('#num_doc').val(data.NumeroDocumento);
-                $('#asunto').val(data.Asunto);
-                $('#fol').val(data.Fol);
-                $('#firma').val(data.Firma);
-            },
-            complete: function (data) {
-                // Hide image container
-                $("#loading").hide();
-            }
-        });
+        function LimpiarControles() {
+            $("#num_sisgedo").val(null);
+            $("#num_doc").val(null);
+            $("#asunto").val(null);
+            $("#fol").val(null);
+            $("#firma").val(null);
+            $("#selectDestino").html('');
+            $("#datepicker").val(null);
+        }
 
-        $.ajax({
-            data: { num_sisgedo: $("#num_sisgedo").val() },
-            type: "GET",
-            dataType: "json",
-            url: '@Url.Action("BuscarDestinos", "Home")',
-            beforeSend: function () {
-                $('#loading').show();
-            },
-            success: function (data) {
-                $("#SelectDestino").html('');
-                $.each(data, function (index, row) {
-                    $("#SelectDestino").append("<option value='" + row.Id + "' selected='selected'>" + row.NombreDestino + "</option>")
-                });
-                $("#SelectDestino").val("0").change();
-            },
-            complete: function (data) {
-                // Hide image container
-                $("#loading").hide();
+        function btnAgregarFecha() {
+
+            if ($("#num_sisgedo").val() == "") {
+                toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+                $("#num_sisgedo").focus();
+                return;
             }
-        });
-    }
+            if ($("#datepicker").val() == "") {
+                toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+                $("#datepicker").focus();
+                return;
+            }
+            if ($("#num_doc").val() == "") {
+                toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+                $("#num_sisgedo").focus();
+                return;
+            }
+
+            var selectDestino = $("#selectDestino option:selected").val();
+
+            var date = $("#datepicker").val();
+
+            var parameters = { 'destino': selectDestino, 'date': date }
+            console.log(parameters);
+
+             $.ajax({
+                url: '@Url.Action("registrarFechaNotificacion", "Home")',
+                data: parameters,
+                type: "POST",
+                //contentType: 'application/json;charset=UTF-8',
+                //dataType: 'json',
+                success: function (response) {
+                    if (response == "success") {
+                        Swal.fire({
+                        type: 'success',
+                        title: 'Se registro con éxito!',
+                        showConfirmButton: false,
+                        timer: 1500
+                        }).then((result) => {
+                            LimpiarControles()
+                        });                                    //Limpiamos el formulario actual
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+             });
+        }
     </script>
 }

@@ -69,5 +69,16 @@ namespace WebPresentation.Controllers
             var destinos = DestinoBL.Instancia.Buscar_Destinos(num_sisgedo);
             return Json(destinos, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult RegistrarFechaNotificacion(string destino, string date)
+        {
+            var mensaje = "success";
+            var success = DestinoBL.Instancia.RegistrarFechaNotificacion(destino, date);
+            if (!success)
+                return Json("error");
+
+            return Json(mensaje);
+        }
     }
 }
