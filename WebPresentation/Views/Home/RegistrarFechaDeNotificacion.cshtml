@@ -3,7 +3,7 @@
     ViewBag.Title = "RegistrarFechaDeNotificacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 <div class="container">
     <br>
     <h4>REGISTRAR FECHA DE NOTFICACION</h4>
@@ -93,7 +93,11 @@
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
             $('#datepicker').datepicker({
-                autoclose: true
+//                todayBtn: "linked",
+                language: "it",
+                autoclose: true,
+                todayHighlight: true,
+                format: 'dd/mm/yyyy' 
             });
         });
     </script>
