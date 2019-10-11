@@ -204,14 +204,13 @@
     var btnAgregar = document.getElementById('btnAgregar');
     btnAgregar.addEventListener("click", function () {
 
-        if ($("#num_sisgedo").val() === "") {
-            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+        if ($("#num_sisgedo").val() == "") {
+            toastr.error("Ingrese número de sisgedo", "Campos Incompletos");
             $("#num_sisgedo").focus();
             return;
         }
-
-        if ($("#destino").val() === "") {
-            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+        if ($("#destino").val().trim() == "") {
+            toastr.error("Ingrese campo destino", "Campos Incompletos");
             $("#destino").focus();
             return;
         }
@@ -264,7 +263,7 @@
     }
 
     function btnBuscar() {
-
+io
         if ($("#num_sisgedo").val().trim() == "") {
             toastr.error("Ingrese número de sisgedo", "Campos Incompletos");
             $("#num_sisgedo").focus();
