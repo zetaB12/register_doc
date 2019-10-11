@@ -265,8 +265,13 @@
 
     function btnBuscar() {
 
-        if ($("#num_sisgedo").val() == "") {
-            toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+        if ($("#num_sisgedo").val().trim() == "") {
+            toastr.error("Ingrese número de sisgedo", "Campos Incompletos");
+            $("#num_sisgedo").focus();
+            return;
+        }
+        if (isNaN($("#num_sisgedo").val())) {
+            toastr.error("Ingrese solo números", "Error");
             $("#num_sisgedo").focus();
             return;
         }
