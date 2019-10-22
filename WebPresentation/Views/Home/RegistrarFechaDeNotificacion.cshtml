@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-md-3 col-xs-12 col-sm-12"></div>
                             <div class="col-md-6 col-xs-12 col-sm-12">
-                                <button type="button" class="btn btn-primary form-control" id="btnAgregar"><span><strong>AGREGAR</strong></span></button>
+                                <button type="button" class="btn btn-primary form-control" onclick="btnAgregarFecha()"><span><strong>AGREGAR</strong></span></button>
                             </div>
                             <div class="col-md-3 col-xs-12 col-sm-12"></div>
                         </div>
@@ -105,14 +105,19 @@
     <script>
         function btnBuscar() {
 
-            if ($("#num_sisgedo").val() == "") {
-                toastr.error("Complete todos los campos porfavor", "Campos Incompletos");
+            if ($("#num_sisgedo").val().trim() == "") {
+                toastr.error("Ingrese número de sisgedo", "Campos Incompletos");
+                $("#num_sisgedo").focus();
+                return;
+            }
+            if (isNaN($("#num_sisgedo").val())) {
+                toastr.error("Ingrese solo números", "Error");
                 $("#num_sisgedo").focus();
                 return;
             }
 
             $.ajax({
-                data: { num_sisgedo: $("#num_sisgedo").val() },
+                data: { num_sisgedo: $("#num_sisgedo").val().trim() },
                 type: "GET",
                 dataType: "json",
                 url: '@Url.Action("BuscarNumSisgedo", "Home")',
@@ -120,6 +125,9 @@
                     $('#loading').show();
                 },
                 success: function (data) {
+                    if (data == "null") {
+                        toastr.error("No se encuentra el numero de sisgedo", "Error");
+                    }
                     $('#id_doc').val(data.Id);
                     $('#num_doc').val(data.NumeroDocumento);
                     $('#asunto').val(data.Asunto);
