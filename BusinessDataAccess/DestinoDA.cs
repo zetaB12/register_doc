@@ -71,10 +71,11 @@ namespace BusinessDataAccess
             return listaDestinos;
         }
 
-        public bool RegistrarFechaNotificacion(string destino, string date)
+        public bool RegistrarFechaNotificacion(int destino, string date)
         {
             SqlCommand cmd = null;
             bool insert = false;
+            
             try
             {
                 SqlConnection cn = Conexion.Instancia.conectar();

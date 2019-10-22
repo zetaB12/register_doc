@@ -38,7 +38,7 @@ namespace BusinessLogic
             }
         }
 
-        public bool RegistrarFechaNotificacion(string destino, string date)
+        public bool RegistrarFechaNotificacion(int destino, string date)
         {
             try
             {

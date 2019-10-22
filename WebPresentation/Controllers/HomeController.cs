@@ -74,7 +74,7 @@ namespace WebPresentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrarFechaNotificacion(string destino, string date)
+        public ActionResult RegistrarFechaNotificacion(int destino, string date)
         {
             var mensaje = "success";
             var success = DestinoBL.Instancia.RegistrarFechaNotificacion(destino, date);

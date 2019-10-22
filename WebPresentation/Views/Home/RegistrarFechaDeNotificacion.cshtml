@@ -45,7 +45,10 @@
         <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label">Destino</label>
             <div class="col-sm-8">
-                <select type="text" class="form-control" id="SelectDestino"></select>
+                <select type="text" class="form-control" id="SelectDestino">
+                    <option selected="selected">--Seleccione--</option>
+                </select>
+                
 
             </div>
         </div>
@@ -93,11 +96,11 @@
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
             $('#datepicker').datepicker({
-                //                todayBtn: "linked",
+                todayBtn: "linked",
                 language: "it",
                 autoclose: true,
                 todayHighlight: true,
-                format: 'dd/mm/yyyy'
+                format: 'mm/dd/yyyy'
             });
         });
     </script>
@@ -150,10 +153,15 @@
                 },
                 success: function (data) {
                     $("#SelectDestino").html('');
-                    $.each(data, function (index, row) {
-                        $("#SelectDestino").append("<option value='" + row.Id + "' selected='selected'>" + row.NombreDestino + "</option>")
-                    });
-                    $("#selectDestino option:selected").trigger("change");
+                    if (data.length > 0) {
+                        $.each(data, function (index, row) {
+                            $("#SelectDestino").append("<option value='" + row.Id + "'>" + row.NombreDestino + "</option>")
+                        });
+                    } else {
+                        $("#SelectDestino").append("<option value = '0'>No hay datos que mostrar</option>")
+                    }
+                    
+                    $("#SelectDestino option:selected").trigger("change");
                 },
                 complete: function (data) {
                     // Hide image container
@@ -168,7 +176,7 @@
             $("#asunto").val(null);
             $("#fol").val(null);
             $("#firma").val(null);
-            $("#selectDestino").html('');
+            $("#SelectDestino").html('');
             $("#datepicker").val(null);
         }
 
@@ -190,7 +198,15 @@
                 return;
             }
 
-            var selectDestino = $("#selectDestino option:selected").val();
+            var des = $("#SelectDestino option:selected").val();
+            if (des == 0) {
+                console.log(des);
+                toastr.error("No hay ningun destino seleccionado", "Campos Incompletos");
+                $("#num_sisgedo").focus();
+                return;
+            }
+
+            var selectDestino = $("#SelectDestino option:selected").val();
 
             var date = $("#datepicker").val();
 
