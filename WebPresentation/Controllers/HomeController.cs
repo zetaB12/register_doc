@@ -20,7 +20,10 @@ namespace WebPresentation.Controllers
 
             var doc = new Documento();
             doc = DocumentoBL.Instancia.buscar_DocSis(num_sisgedo);
-
+            if (doc == null)
+            {
+                return Json("null", JsonRequestBehavior.AllowGet);
+            }
             return Json(doc, JsonRequestBehavior.AllowGet);
 
         }

@@ -263,7 +263,6 @@
     }
 
     function btnBuscar() {
-io
         if ($("#num_sisgedo").val().trim() == "") {
             toastr.error("Ingrese número de sisgedo", "Campos Incompletos");
             $("#num_sisgedo").focus();
@@ -276,7 +275,7 @@ io
         }
 
         $.ajax({
-            data: { num_sisgedo: $("#num_sisgedo").val() },
+            data: { num_sisgedo: $("#num_sisgedo").val().trim() },
             type: "GET",
             dataType: "json",
             url: '@Url.Action("BuscarNumSisgedo", "Home")',
@@ -284,11 +283,18 @@ io
                 $('#loading').show();
             },
             success: function (data) {
+
+                if (data == "null") {
+                    toastr.error("No se encuentra el numero de sisgedo", "Error");
+                }
                 $('#id_doc').val(data.Id);
                 $('#num_doc').val(data.NumeroDocumento);
                 $('#asunto').val(data.Asunto);
                 $('#fol').val(data.Fol);
                 $('#firma').val(data.Firma);
+            },
+            error: function (e) {
+                console.log(e);
             },
             complete: function (data) {
                 // Hide image container
