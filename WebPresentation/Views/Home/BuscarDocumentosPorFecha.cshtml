@@ -40,7 +40,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker">
+                    <input type="text" class="form-control pull-right" id="fechaInicio">
                 </div>
             </div>
             <div class="col-sm-4">
@@ -48,7 +48,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker2">
+                    <input type="text" class="form-control pull-right" id="fechaFin">
                 </div>
             </div>
             <!-- /.input group -->
@@ -80,13 +80,40 @@
     <script>
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
-            $('#datepicker').datepicker({
+            $('#datepicker').fechaInicio({
                 autoclose: true
             });
-            $('#datepicker2').datepicker({
+            $('#datepicker2').fechaFin({
                 autoclose: true
             });
         });
+
+         function BuscarFechas() {
+
+        var parameters = { 'fechaInicio': $("#fechaInicio").val(), 'fechaFin': $("#fechaFin").val() }
+        console.log(parameters)
+
+        $.ajax({
+            data: parameters,
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("BuscarHojaPorFechas", "Home")',
+            success: function (data) {
+                console.log(data);
+                if (data=="error") {
+                    toastr.error("No se encuentra numero de sisgedo", "Error");
+                }
+                $('#num_doc').val(data.NumeroDoc);
+                $('#asunto').val(data.Asunto);
+                $('#fol').val(data.Fol);
+                $('#firma').val(data.Firma);
+                $('#IdSisgedo').val(data.Id);
+            },
+            error: function (e) {
+                console.log(e);
+            },
+        });
+    }
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 }
