@@ -62,6 +62,17 @@ namespace WebPresentation.Controllers
             return View();
         }
 
+         public JsonResult BuscarHojaPorFechas(string fechaInicio, string fechaFin)
+        {
+            var doc = HojaEnvioBL.Instancia.BuscarHojaPorFechas(fechaInicio, fechaFin);
+            if (doc == null)
+            {
+                return new JsonResult() { Data = "error", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+
+            return new JsonResult() { Data = doc, JsonRequestBehavior = JsonRequestBehavior.AllowGet, MaxJsonLength = Int32.MaxValue };
+        }
+
         public ActionResult RegistrarFechaDeNotificacion()
         {
             return View();
