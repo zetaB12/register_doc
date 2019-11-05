@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessEntity;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -39,6 +41,41 @@ namespace BusinessDataAccess
 
                 throw ex;
             }
+        }
+
+        public List<HojaEnvio> BuscarHojaPorFechas(string fechaInicio, string fechaFin)
+        {
+            SqlCommand cmd = null;
+            List<HojaEnvio> lista = new List<HojaEnvio>();
+            HojaEnvio oHojaEnvio;
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.conectar();
+                cmd = new SqlCommand("_spBuscarPorFechas", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaFin", fechaFin);
+                cn.Open();
+                SqlDataReader data = cmd.ExecuteReader();
+                while (data.Read())
+                {
+                    oHojaEnvio = new HojaEnvio
+                    {
+                        Id = Convert.ToInt32(data["idHoja"]),
+                        Fecha = Convert.ToString(data["fecha"]),
+                        IdCourier = Convert.ToInt32(data["idCourier"]),
+                    };
+
+                    lista.Add(oHojaEnvio);
+                };
+                    return lista;
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }
