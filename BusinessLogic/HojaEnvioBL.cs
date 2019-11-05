@@ -1,4 +1,6 @@
 ﻿using BusinessDataAccess;
+using BusinessEntity;
+using System.Collections.Generic;
 
 namespace BusinessLogic
 {
@@ -13,6 +15,11 @@ namespace BusinessLogic
         public int CreateHojaEnvio(int? idCourier)
         {
             return HojaEnvioDA.Instancia.CreateHojaEnvioReturnID(idCourier);
+        }
+
+        public List<HojaEnvio> BuscarHojaPorFechas(string fechaInicio, string fechaFin)
+        {
+            return HojaEnvioDA.Instancia.BuscarHojaPorFechas(fechaInicio, fechaFin);
         }
     }
 }
