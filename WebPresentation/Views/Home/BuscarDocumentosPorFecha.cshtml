@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12 col-xs-12 col-sm-12">
-                            <button type="button" class="btn btn-primary form-control" id="btnAgregar"><span><strong>BUSCAR</strong></span></button>
+                            <button type="button" class="btn btn-primary form-control" onclick="BuscarFechas()"><span><strong>BUSCAR</strong></span></button>
                         </div>
                     </div>
                 </div>
@@ -77,43 +77,51 @@
 
 @section scriptsBuscarDocFecha {
 
-    <script>
+<script>
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
-            $('#datepicker').fechaInicio({
-                autoclose: true
+            $('#fechaInicio').datepicker({
+                todayBtn: "linked",
+                language: "it",
+                autoclose: true,
+                todayHighlight: true,
+                format: 'mm/dd/yyyy'
             });
-            $('#datepicker2').fechaFin({
-                autoclose: true
+            $('#fechaFin').datepicker({
+                todayBtn: "linked",
+                language: "it",
+                autoclose: true,
+                todayHighlight: true,
+                format: 'mm/dd/yyyy'
             });
         });
 
          function BuscarFechas() {
 
-        var parameters = { 'fechaInicio': $("#fechaInicio").val(), 'fechaFin': $("#fechaFin").val() }
-        console.log(parameters)
+            var parameters = { 'fechaInicio': $("#fechaInicio").val(), 'fechaFin': $("#fechaFin").val() }
+            console.log(parameters)
 
-        $.ajax({
-            data: parameters,
-            type: "GET",
-            dataType: "json",
-            url: '@Url.Action("BuscarHojaPorFechas", "Home")',
-            success: function (data) {
-                console.log(data);
-                if (data=="error") {
-                    toastr.error("No se encuentra numero de sisgedo", "Error");
-                }
-                $('#num_doc').val(data.NumeroDoc);
-                $('#asunto').val(data.Asunto);
-                $('#fol').val(data.Fol);
-                $('#firma').val(data.Firma);
-                $('#IdSisgedo').val(data.Id);
-            },
-            error: function (e) {
-                console.log(e);
-            },
-        });
-    }
-    </script>
+            $.ajax({
+                data: parameters,
+                type: "GET",
+                dataType: "json",
+                url: '@Url.Action("BuscarHojaPorFechas", "Home")',
+                success: function (data) {
+                    console.log(data);
+                    if (data=="error") {
+                        toastr.error("No se encuentra numero de sisgedo", "Error");
+                    }
+                    $('#num_doc').val(data.NumeroDoc);
+                    $('#asunto').val(data.Asunto);
+                    $('#fol').val(data.Fol);
+                    $('#firma').val(data.Firma);
+                    $('#IdSisgedo').val(data.Id);
+                },
+                error: function (e) {
+                    console.log(e);
+                },
+            });
+         }
+</script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 }
