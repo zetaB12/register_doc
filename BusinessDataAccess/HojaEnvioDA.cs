@@ -61,9 +61,9 @@ namespace BusinessDataAccess
                 {
                     oHojaEnvio = new HojaEnvio
                     {
-                        Id = Convert.ToInt32(data["idHoja"]),
+                        Id = Convert.ToInt32(data["id_hoja"]),
                         Fecha = Convert.ToString(data["fecha"]),
-                        IdCourier = Convert.ToInt32(data["idCourier"]),
+                        IdCourier = Convert.ToInt32(data["id_courier"]),
                     };
 
                     lista.Add(oHojaEnvio);
