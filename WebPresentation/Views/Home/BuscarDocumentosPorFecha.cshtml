@@ -80,7 +80,7 @@
                         <th>Fecha</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="set_dataFecha"></tbody>
             </table>
             <button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>
         </div>
@@ -123,14 +123,17 @@
                 dataType: "json",
                 url: '@Url.Action("BuscarHojaPorFechas", "Home")',
                 success: function (data) {
+                    $("#encabezadoTable").show("slow");
                     console.log(data);
+                    var setData = $('#set_dataFecha');
                     $.each(data, function (i, item) {
                         console.log(item);
-                        var tr = $('<tr>').append(
-                            $('<td class="codigo">').html(item['id']),
-                            $('<td class="descripcion">').html(item['fecha']),
-                            $('<td>').append('<input type="button" class="abrirModal btnVer" value="Edit">'));
-                            $('tbody').append(tr);
+                        var tr = "<tr>" +
+                            "<td>" + item.Id + "</td>" +
+                            "<td>" + item.Fecha + "</td>" +
+                            "</tr>";
+                        console.log(tr);
+                        setData.append(tr);
                     });
 
                     if (data=="error") {
