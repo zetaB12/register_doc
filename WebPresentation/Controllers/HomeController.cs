@@ -70,7 +70,7 @@ namespace WebPresentation.Controllers
                 return new JsonResult() { Data = "error", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
 
-            return new JsonResult() { Data = doc, JsonRequestBehavior = JsonRequestBehavior.AllowGet, MaxJsonLength = Int32.MaxValue };
+            return Json(doc, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RegistrarFechaDeNotificacion()

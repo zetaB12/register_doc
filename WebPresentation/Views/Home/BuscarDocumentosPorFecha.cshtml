@@ -151,11 +151,7 @@
                     if (data=="error") {
                         toastr.error("No se encuentra numero de sisgedo", "Error");
                     }
-                    $('#num_doc').val(data.NumeroDoc);
-                    $('#asunto').val(data.Asunto);
-                    $('#fol').val(data.Fol);
-                    $('#firma').val(data.Firma);
-                    $('#IdSisgedo').val(data.Id);
+                    
                 },
                 error: function (e) {
                     console.log(e);
