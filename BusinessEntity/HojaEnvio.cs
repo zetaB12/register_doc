@@ -11,5 +11,7 @@ namespace BusinessEntity
         public int Id { get; set; }
         public string Fecha { get; set; }
         public int IdCourier { get; set; }
+
+        public string Nombre { get; set; }
     }
 }
