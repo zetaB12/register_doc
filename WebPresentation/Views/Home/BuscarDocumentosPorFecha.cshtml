@@ -78,11 +78,12 @@
                     <tr>
                         <th>N°</th>
                         <th>Fecha</th>
+                        <th>Courier</th>
                     </tr>
                 </thead>
                 <tbody id="set_dataFecha"></tbody>
             </table>
-            <button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>
+            @*<button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>*@
         </div>
     </div>
 </div>
@@ -131,6 +132,7 @@
                         var tr = "<tr>" +
                             "<td>" + item.Id + "</td>" +
                             "<td>" + item.Fecha + "</td>" +
+                            "<td>" + item.Nombre + "</td>" +
                             "</tr>";
                         console.log(tr);
                         setData.append(tr);
