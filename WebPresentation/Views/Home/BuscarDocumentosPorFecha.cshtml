@@ -115,6 +115,16 @@
 
          function BuscarFechas() {
 
+             if ($("#fechaInicio").val() == "") {
+                 toastr.error("Ingrese Fecha inicio", "Campos Incompletos");
+                 $("#fechaInicio").focus();
+                 return;
+             }
+             if ($("#fechaFin").val() == "") {
+                 toastr.error("Ingrese Fecha fin", "Campos Incompletos");
+                 $("#fechaFin").focus();
+                 return;
+             }
             var parameters = { 'fechaInicio': $("#fechaInicio").val(), 'fechaFin': $("#fechaFin").val() }
             console.log(parameters)
 
