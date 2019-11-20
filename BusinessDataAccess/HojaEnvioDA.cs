@@ -63,7 +63,7 @@ namespace BusinessDataAccess
                     {
                         Id = Convert.ToInt32(data["id_hoja"]),
                         Fecha = Convert.ToString(data["fecha"]),
-                        IdCourier = Convert.ToInt32(data["id_courier"]),
+                        Nombre = Convert.ToString(data["nombre"]),
                     };
 
                     lista.Add(oHojaEnvio);
