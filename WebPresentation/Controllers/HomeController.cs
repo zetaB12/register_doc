@@ -62,7 +62,15 @@ namespace WebPresentation.Controllers
             return View();
         }
 
-         public JsonResult BuscarHojaPorFechas(string fechaInicio, string fechaFin)
+        [HttpPost]
+        public ActionResult BuscarDocumentosPorFecha(string fechaInicio, string fechaFin)
+        {
+            var doc = HojaEnvioBL.Instancia.BuscarHojaPorFechas(fechaInicio, fechaFin);
+            Session["listDoc"] = doc;
+            return View();
+        }
+
+        public JsonResult BuscarHojaPorFechas(string fechaInicio, string fechaFin)
         {
             var doc = HojaEnvioBL.Instancia.BuscarHojaPorFechas(fechaInicio, fechaFin);
             if (doc == null)
@@ -71,7 +79,7 @@ namespace WebPresentation.Controllers
             }
 
             return Json(doc, JsonRequestBehavior.AllowGet);
-        }
+        }       
 
         public ActionResult RegistrarFechaDeNotificacion()
         {

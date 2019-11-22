@@ -1,4 +1,4 @@
-﻿
+﻿@using BusinessEntity
 @{
     ViewBag.Title = "BuscarDocumentosPorFecha";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,64 +11,92 @@
     <h3>Buscar Documentos</h3>
     <hr class="style-three" />
     <br />
-
-    <div class="container col-md-12 col-xs-12">
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
-            <div class="col-sm-8">
-                <select id="selectSede" class="js-example-placeholder-single js-example-responsive form-control">
-                    <option disabled selected>--Seleccione--</option>
-                    <option>Empresa Mapresa</option>
-                    <option>Olva</option>
-                    <option>Juan Benito</option>
-                    @*@foreach (var Sede in ListarSede)
-                        {
-                            <option value="@Sede.Id_Sede">@Sede.Sede_Descripcion</option>
-                        }*@
-                </select>
-            </div>
-            <div class="form-group col-md-2 col-xs-2">
-                @* <button type="button" class="btn btn-primary" style="width:34px"><strong>Aceptar</strong></button>*@
-                @*<button type="button" class="button_Registrar" style=" width: 130px; height: 35px;" onclick="@("window.location.href='"+Url.Action("Registro","home")+"'");"><span><strong>Aceptar</strong></span></button>*@
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Fecha de notificacion</label>
-            <div class="col-sm-4">
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-right" id="fechaInicio">
+    @using (Html.BeginForm())
+    {
+        <div class="container col-md-12 col-xs-12">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
+                <div class="col-sm-8">
+                    <select id="selectSede" class="js-example-placeholder-single js-example-responsive form-control">
+                        <option disabled selected>--Seleccione--</option>
+                        <option>Empresa Mapresa</option>
+                        <option>Olva</option>
+                        <option>Juan Benito</option>
+                        @*@foreach (var Sede in ListarSede)
+                            {
+                                <option value="@Sede.Id_Sede">@Sede.Sede_Descripcion</option>
+                            }*@
+                    </select>
+                </div>
+                <div class="form-group col-md-2 col-xs-2">
+                    @* <button type="button" class="btn btn-primary" style="width:34px"><strong>Aceptar</strong></button>*@
+                    @*<button type="button" class="button_Registrar" style=" width: 130px; height: 35px;" onclick="@("window.location.href='"+Url.Action("Registro","home")+"'");"><span><strong>Aceptar</strong></span></button>*@
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
+
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Fecha de notificacion</label>
+                <div class="col-sm-4">
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="fechaInicio" name="fechaInicio">
                     </div>
-                    <input type="text" class="form-control pull-right" id="fechaFin">
                 </div>
+                <div class="col-sm-4">
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="fechaFin" name="fechaFin">
+                    </div>
+                </div>
+                <!-- /.input group -->
             </div>
-            <!-- /.input group -->
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-            <form>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                            <button type="button" class="btn btn-primary form-control" onclick="BuscarFechas()"><span><strong>BUSCAR</strong></span></button>
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <button type="submit" class="btn btn-primary form-control" ><span><strong>BUSCAR</strong></span></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    }
+
     <br />
 </div>
+
+<ul>
+    @{
+        List<HojaEnvio> list = (List<HojaEnvio>)Session["listDoc"];
+
+        if (list != null)
+        {
+            foreach (var item in list)
+            {
+                <li>
+                    <a href="@Url.Action("ListaProductos", "Carrito", new { IdHojaEnvio = item.Id})">
+                        @item.Fecha
+                    </a>
+                </li>
+            }
+        }
+        else
+        {
+            <li>No hay data</li>
+        }
+
+    }
+
+
+</ul>
 
 <div class="container">
     <div id="encabezadoTable" style="display: none">
@@ -94,7 +122,7 @@
 
 @section scriptsBuscarDocFecha {
 
-<script>
+    <script>
         $(document).ready(function () {
             //        var $j = jQuery.noConflict(); en caso de haber conflicto, cambiamos el '$' por '$j'
             $('#fechaInicio').datepicker({
@@ -151,13 +179,13 @@
                     if (data=="error") {
                         toastr.error("No se encuentra numero de sisgedo", "Error");
                     }
-                    
+
                 },
                 error: function (e) {
                     console.log(e);
                 },
             });
          }
-</script>
+    </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 }
