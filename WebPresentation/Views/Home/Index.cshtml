@@ -232,6 +232,10 @@
         LimpiarControles();
     });
 
+        function InsertarFilaAlaTabla(fila) {
+        $("#detalle").children("tbody").append(fila);
+        }
+
         function contar() {
             var num = $("#detalle tbody tr").length;
             console.log("di " + num);
@@ -249,9 +253,7 @@
         }
      }
 
-    function InsertarFilaAlaTabla(fila) {
-        $("#detalle").children("tbody").append(fila);       
-    }
+    
 
     function LimpiarControles() {
         $("#num_sisgedo").val(null);

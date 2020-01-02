@@ -21,5 +21,10 @@ namespace BusinessLogic
         {
             return HojaEnvioDA.Instancia.BuscarHojaPorFechas(fechaInicio, fechaFin);
         }
+
+        public List<Documento> ReporteXtraReport(int? id)
+        {
+            return HojaEnvioDA.Instancia.ReporteXtraReport(id);    
+        }
     }
 }

@@ -59,6 +59,7 @@ namespace WebPresentation.Controllers
 
         public ActionResult BuscarDocumentosPorFecha()
         {
+
             return View();
         }
 
@@ -101,6 +102,11 @@ namespace WebPresentation.Controllers
                 return Json("error");
 
             return Json(mensaje);
+        }
+
+        public ActionResult ReportesHojasDeEnvios()
+        {
+            return View();
         }
     }
 }

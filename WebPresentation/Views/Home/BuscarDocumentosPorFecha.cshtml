@@ -11,8 +11,9 @@
     <h3>Buscar Documentos</h3>
     <hr class="style-three" />
     <br />
-    @using (Html.BeginForm())
-    {
+    @*@using (Html.BeginForm("BuscarDocumentosPorFecha", "Home", FormMethod.Post, new { id = "validateForm" }))
+        {*@
+    <form action="/Home/BuscarDocumentosPorFecha" method="post" id="validateForm" onsubmit="return validateForm()">
         <div class="container col-md-12 col-xs-12">
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Courier Notificadora</label>
@@ -57,49 +58,24 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <form>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                <button type="submit" class="btn btn-primary form-control" ><span><strong>BUSCAR</strong></span></button>
-                            </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <button type="submit" class="btn btn-primary form-control"><span><strong>BUSCAR</strong></span></button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    }
+        </form>
+        @*}*@
 
-    <br />
+        <br />
 </div>
 
-<ul>
-    @{
-        List<HojaEnvio> list = (List<HojaEnvio>)Session["listDoc"];
-
-        if (list != null)
-        {
-            foreach (var item in list)
-            {
-                <li>
-                    <a href="@Url.Action("ListaProductos", "Carrito", new { IdHojaEnvio = item.Id})">
-                        @item.Fecha
-                    </a>
-                </li>
-            }
-        }
-        else
-        {
-            <li>No hay data</li>
-        }
-
-    }
-
-
-</ul>
 
 <div class="container">
-    <div id="encabezadoTable" style="display: none">
+    <div id="encabezadoTable" >
         <div class="table-responsive">
             <table id="detalle" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
                 <thead>
@@ -109,9 +85,53 @@
                         <th>Courier</th>
                     </tr>
                 </thead>
-                <tbody id="set_dataFecha"></tbody>
-            </table>
-            @*<button type="button" class="btn btn-primary form-control" id="btnRegistrar"><span><strong>REGISTRAR</strong></span></button>*@
+                <tbody id="set_dataFecha">
+
+                    @{
+
+                        List<HojaEnvio> list = (List<HojaEnvio>)Session["listDoc"];
+
+                        if (list != null)
+                        {
+                            if (list.Count != 0)
+                            {
+                                var i = 0;
+                                foreach (var item in list)
+                                {
+                                    i++;
+                                    <tr>
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("ListaProductos", "Carrito", new { IdHojaEnvio = item.Id})">
+                                                @item.Fecha.Substring(0, 10)
+                                        </td>
+                                        <td>
+                                            @item.Nombre
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+                </table>
         </div>
     </div>
 </div>
@@ -140,6 +160,21 @@
                 format: 'mm/dd/yyyy'
             });
         });
+
+        function validateForm() {
+            console.log("errir");
+            if ($("#fechaInicio").val() == "") {
+                toastr.error("Ingrese Fecha inicio", "Campos Incompletos");
+                $("#fechaInicio").focus();
+                return false;
+            } else true;
+            if ($("#fechaFin").val() == "") {
+                toastr.error("Ingrese Fecha fin", "Campos Incompletos");
+                $("#fechaFin").focus();
+                return false;
+            } else true;
+        }
+        
 
          function BuscarFechas() {
 

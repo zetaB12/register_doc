@@ -137,6 +137,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Home\BuscarDocumentosPorFecha.cshtml" />
     <Content Include="Views\Home\RegistrarFechaDeNotificacion.cshtml" />
+    <Content Include="Views\Home\ReportesHojasDeEnvios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,6 +148,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Rpt\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntity\BusinessEntity.csproj">
