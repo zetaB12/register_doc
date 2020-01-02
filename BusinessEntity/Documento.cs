@@ -9,5 +9,8 @@ namespace BusinessEntity
         public int Fol { get; set; }
         public string NumeroDocumento { get; set; }
         public string Firma { get; set; }
+
+        //extra
+        public string NombreDestino { get; set; }
     }
 }

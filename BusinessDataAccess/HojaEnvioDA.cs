@@ -79,7 +79,40 @@ namespace BusinessDataAccess
 
         public List<Documento> ReporteXtraReport(int? id)
         {
+            SqlCommand cmd = null;
+            List<Documento> lista = new List<Documento>();
+            Documento oDocumento;
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.conectar();
+                cmd = new SqlCommand("_spReporteHojaEnvio", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmintId", id);
+                cn.Open();
+                SqlDataReader data = cmd.ExecuteReader();
+                while (data.Read())
+                {
+                    oDocumento = new Documento
+                    {
+                        Id = Convert.ToInt32(data["id_documento"]),
+                        Asunto = Convert.ToString(data["asunto"]),
+                        Fol = Convert.ToInt32(data["fol"]),
+                        NumeroDocumento = Convert.ToString(data["num_doc"]),
+                        Firma = Convert.ToString(data["firma"]),
+                        NumeroSisgedo = Convert.ToString(data["num_sisgedo"]),
+                        NombreDestino = Convert.ToString(data["nombreDestino"]),
+                    };
 
+                    lista.Add(oDocumento);
+                };
+                return lista;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
     }
 }
