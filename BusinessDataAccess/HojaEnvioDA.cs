@@ -75,6 +75,10 @@ namespace BusinessDataAccess
             {
                 throw;
             }
+        }
+
+        public List<Documento> ReporteXtraReport(int? id)
+        {
 
         }
     }
