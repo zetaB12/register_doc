@@ -11,8 +11,10 @@ namespace WebPresentation
     {
         protected void Application_Start()
         {
+            DevExpress.XtraReports.Web.WebDocumentViewer.Native.WebDocumentViewerBootstrapper.SessionState = System.Web.SessionState.SessionStateBehavior.Disabled;
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            DevExpress.Web.Mvc.MVCxWebDocumentViewer.StaticInitialize();
         }
     }
 }

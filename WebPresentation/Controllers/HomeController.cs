@@ -3,11 +3,13 @@ using BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using WebPresentation.Views.Rpt;
 
 namespace WebPresentation.Controllers
 {
     public class HomeController : Controller
     {
+        XtraReport1 reportxtra = new XtraReport1();
         // GET: Home
         public ActionResult Index()
         {
@@ -106,6 +108,23 @@ namespace WebPresentation.Controllers
 
         public ActionResult ReportesHojasDeEnvios()
         {
+            return View();
+        }
+
+        public ActionResult DocumentViewerPartial()
+        {
+            List<Documento> listHoja = HojaEnvioBL.Instancia.ReporteXtraReport(Convert.ToInt32(Session["idHoja"]));
+            Session["objDocHoja"] = listHoja;
+            reportxtra.DataSource = (List<Documento>)Session["objDocHoja"];
+
+
+            ViewData["Report"] = reportxtra;
+            return PartialView("_DocumentViewerPartial", reportxtra);
+        }
+
+        public ActionResult Reporte(int? id)
+        {
+            List<Documento> listHoja = HojaEnvioBL.Instancia.ReporteXtraReport(id);
             return View();
         }
     }
