@@ -101,6 +101,10 @@ namespace BusinessDataAccess
                         Firma = Convert.ToString(data["firma"]),
                         NumeroSisgedo = Convert.ToString(data["num_sisgedo"]),
                         NombreDestino = Convert.ToString(data["nombreDestino"]),
+                        FechaNotif = Convert.ToString(data["fecha_notificacion"]),
+                        FechaDev = Convert.ToString(data["fecha_dev"]),
+                        Devolucion = Convert.ToBoolean(data["devolucion"]),
+
                     };
 
                     lista.Add(oDocumento);

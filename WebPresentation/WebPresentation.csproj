@@ -177,6 +177,7 @@
     <Content Include="Views\Home\RegistrarFechaDeNotificacion.cshtml" />
     <Content Include="Views\Home\ReportesHojasDeEnvios.cshtml" />
     <Content Include="Views\Home\_DocumentViewerPartial.cshtml" />
+    <Content Include="Views\Home\Reporte.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

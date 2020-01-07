@@ -3,3 +3,4 @@ C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessEntity\bin\Debug\Busi
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessEntity\obj\Debug\BusinessEntity.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessEntity\obj\Debug\BusinessEntity.dll
 C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessEntity\obj\Debug\BusinessEntity.pdb
+C:\Users\ASUS\Desktop\registro_doc\WebPresentation\BusinessEntity\obj\Debug\BusinessEntity.csprojAssemblyReference.cache

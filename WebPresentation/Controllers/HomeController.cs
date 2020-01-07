@@ -125,6 +125,7 @@ namespace WebPresentation.Controllers
         public ActionResult Reporte(int? id)
         {
             List<Documento> listHoja = HojaEnvioBL.Instancia.ReporteXtraReport(id);
+            ViewBag.listaDeDoc = listHoja;
             return View();
         }
     }

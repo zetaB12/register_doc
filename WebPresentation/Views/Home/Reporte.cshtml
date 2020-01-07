@@ -1,0 +1,87 @@
+﻿@using BusinessEntity
+@{
+    ViewBag.Title = "Reporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <h2>Reporte</h2>
+    <div id="encabezadoTable">
+        <div class="table-responsive">
+            <table id="detalle" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Número Sisgedo</th>
+                        <th>Folios</th>
+                        <th>Número Documento</th>
+                        <th>Nombre del Destino</th>
+                        <th>Firma</th>
+                    </tr>
+                </thead>
+                <tbody id="set_dataFecha">
+
+                    @{
+
+                        List<Documento> list = ViewBag.listaDeDoc;
+
+                        if (list != null)
+                        {
+                            if (list.Count != 0)
+                            {
+                                var i = 0;
+                                foreach (var item in list)
+                                {
+                                    i++;
+                                    <tr>
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>
+                                            @item.NumeroSisgedo
+                                        </td>
+                                        <td>
+                                            @item.Fol
+                                        </td>
+                                        <td>
+                                            @item.NumeroDocumento
+                                        </td>
+                                        <td>
+                                            @item.NombreDestino
+                                        </td>
+                                        <td>
+                                            @item.Firma
+                                        </td>
+                                        <td>
+                                            @item.FechaNotif
+                                        </td>
+                                        <td>
+                                            @item.FechaDev
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                    <td>
+                                        No hay data
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

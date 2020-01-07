@@ -12,5 +12,8 @@ namespace BusinessEntity
 
         //extra
         public string NombreDestino { get; set; }
+        public string FechaNotif { get; set; }
+        public string FechaDev { get; set; }
+        public bool Devolucion { get; set; }
     }
 }
